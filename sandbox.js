@@ -13,8 +13,26 @@ app.get('/' , (req, res) => {
 });
 
 // function definition examples
-function myFunction() {
+async function myFunction() {
     console.log("Hello from my function");
+
+// front end
+// const result = await fetch("http://localhost:3000/books",
+//     { 
+//         method: "POST",
+//         body: JSON.stringify(bodyObjectHere)
+//     }
+// )
+// if (!result.ok) { // here we would use the status code from the server
+//     throw new Error("Something went wrong");
+// }
+
+    
+    const person = { name: 'Christian', email: 'kirs@ek.dk' };
+    const { name, email } = person; // destructuring
+    console.log(name);
+    console.log(email);
+    
 }
 const myFunction2 = (req, res) => {
     console.log("Hello from my function 2");
@@ -32,22 +50,8 @@ app.get('/books', async (req, res) => {
     }
 })
 
-app.post('/books', async (req, res) => {
-    console.log(req.body);
-app.get('/books', async (req, res) => {
-    try {
-        const all = await pool.query(
-            "SELECT id, title, author FROM books ORDER BY id"
-        );
-
-        res.status(200).json(all.rows);
-    } catch (err) {
-        console.error(err);
-        res.status(500).json({ error: "Database error" });
-    }
-});
-
 app.get('/books/:id', async (req, res) => {
+    
     try {
         const one = await pool.query(
             "SELECT id, title, author FROM books WHERE id = $1",
