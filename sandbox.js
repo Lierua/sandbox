@@ -2,7 +2,6 @@ const express = require('express');
 const pool = require('./db');
 const app = express();
 const port = 3000;
-const pool = require("./db");
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json()); // parse JSON bodies   ​
@@ -45,8 +44,9 @@ app.get('/books', async (req, res) => {
         const result = await pool.query("SELECT * FROM books" );
         console.log(result.rows);
         res.status(200).json(result.rows);
-    } catch(error) {
-        res.status(500).send({message: "Error connecting to database"});
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: "Database error", code: err.code });
     }
 })
 
