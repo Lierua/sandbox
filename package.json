@@ -1,5 +1,5 @@
 {
-  "name": "sandbox",
+  "name": "hogwart",
   "version": "1.0.0",
   "description": "",
   "license": "ISC",
@@ -8,12 +8,13 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node sandbox.js"
+    "start": "node hogwart.js"
   },
   "dependencies": {
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "http": "^0.0.1-security",
+    "packages": "^0.0.8",
     "pg": "^8.23.0"
   }
 }

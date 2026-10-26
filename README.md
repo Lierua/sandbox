@@ -1,4 +1,4 @@
-# sandbox
+# hogwart
 
 A small Express + PostgreSQL API used in class. It serves a `books` table with
 GET / POST / PUT / DELETE endpoints.
@@ -54,16 +54,16 @@ Then open <http://localhost:3000/books>.
 Read the actual error in the terminal - it tells you which of the four steps
 you missed.
 
-| Error | What it means |
-|---|---|
-| `Cannot find module 'pg'` or `'dotenv'` | Step 1 - run `npm install` |
-| `database "bookshop" does not exist` (`3D000`) | Step 2 - create the database |
-| `relation "books" does not exist` (`42P01`) | Step 2 - run `schema.sql` |
-| `password authentication failed` (`28P01`) | Step 3 - wrong password in `.env` |
-| `role "<your own username>" does not exist` | Step 3 - **your `.env` is not being read** |
-| `database "<your own username>" does not exist` | Step 3 - same as above |
-| `SASL: client password must be a string` | Step 3 - `PGPASSWORD` is empty or missing |
-| `ECONNREFUSED` | Postgres is not running, or is on a different port than `PGPORT` |
+| Error                                           | What it means                                                    |
+| ----------------------------------------------- | ---------------------------------------------------------------- |
+| `Cannot find module 'pg'` or `'dotenv'`         | Step 1 - run `npm install`                                       |
+| `database "bookshop" does not exist` (`3D000`)  | Step 2 - create the database                                     |
+| `relation "books" does not exist` (`42P01`)     | Step 2 - run `schema.sql`                                        |
+| `password authentication failed` (`28P01`)      | Step 3 - wrong password in `.env`                                |
+| `role "<your own username>" does not exist`     | Step 3 - **your `.env` is not being read**                       |
+| `database "<your own username>" does not exist` | Step 3 - same as above                                           |
+| `SASL: client password must be a string`        | Step 3 - `PGPASSWORD` is empty or missing                        |
+| `ECONNREFUSED`                                  | Postgres is not running, or is on a different port than `PGPORT` |
 
 **If the error names your own computer username**, your `.env` is missing or is
 not being found. `dotenv` fails silently, and the app then falls back to
