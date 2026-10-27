@@ -1,10 +1,11 @@
-const express = require("express");
-const pool = require("./db");
+import express from "express";
+import pool from "./db.js";
+
 const app = express();
 const port = 3000;
 
 app.use(express.urlencoded({ extended: true }));
-app.use(express.json()); // parse JSON bodies   ​
+app.use(express.json());
 
 app.get("/", (req, res) => {
   res.send("Hello Hogwarts!");
