@@ -1,4 +1,4 @@
-import { getAllHouses } from "../repositories/houseRepository.js";
+import { getAllHouses } from "../repositories/housesRepository.js";
 
 export const getHouses = async (req, res) => {
   try {

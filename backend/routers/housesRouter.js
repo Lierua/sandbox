@@ -1,5 +1,8 @@
-import { getHouses } from "./controllers/housesController.js";
+import express from "express";
+import { getHouses } from "../controllers/housesController.js";
 
-app.get("/houses", async (req, res) => {
-  getHouses();
-});
+const housesRouter = express.Router();
+
+housesRouter.get("/", getHouses);
+
+export default housesRouter;
