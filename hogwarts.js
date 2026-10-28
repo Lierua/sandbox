@@ -245,23 +245,9 @@ app.post("/teachers", async (req, res) => {
 });
 
 ///////// HOUSES BACKEND ////////////
+import housesRouter from "./backend/routers/housesRouter.js";
 
-import { getAllHouses } from "./repositories/housesRepository.js";
-
-app.get("/houses", async (req, res) => {
-  try {
-    const houses = await getAllHouses();
-
-    res.status(200).json(houses);
-  } catch (err) {
-    console.error(err);
-
-    res.status(500).json({
-      error: "Database error",
-      code: err.code,
-    });
-  }
-});
+app.use("/houses", housesRouter);
 
 ///////// COURSES BACKEND ////////////
 
