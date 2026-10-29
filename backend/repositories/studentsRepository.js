@@ -1,6 +1,5 @@
 import pool from "../../db.js";
 
-// GET all students
 export const getAllStudents = async () => {
   const result = await pool.query(`
     SELECT
@@ -25,7 +24,6 @@ export const getAllStudents = async () => {
   return result.rows;
 };
 
-// GET one student by ID
 export const getStudentByID = async (id) => {
   const result = await pool.query(
     `
@@ -54,7 +52,6 @@ export const getStudentByID = async (id) => {
   return result.rows[0] ?? null;
 };
 
-// POST a new student
 export const createStudent = async (student_name, house, starting_year) => {
   const result = await pool.query(
     `
@@ -67,4 +64,29 @@ export const createStudent = async (student_name, house, starting_year) => {
   );
 
   return result.rows[0];
+};
+
+export const updateStudent = async (id, student_name, house, starting_year) => {
+  const result = await pool.query(
+    `UPDATE hogwarts.students
+     SET student_name = $2,
+         house = $3,
+         starting_year = $4
+     WHERE id = $1
+     RETURNING id, student_name, house, starting_year`,
+    [id, student_name, house, starting_year],
+  );
+
+  return result.rows[0] ?? null;
+};
+
+export const deleteStudentFromDB = async (id) => {
+  const result = await pool.query(
+    `DELETE FROM hogwarts.students
+     WHERE id = $1
+     RETURNING id, student_name, house, starting_year`,
+    [id],
+  );
+
+  return result.rows[0] ?? null;
 };
