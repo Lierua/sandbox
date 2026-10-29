@@ -1,8 +1,9 @@
 import express from "express";
-import { getHouses } from "../controllers/housesController.js";
+import { getHouse, getHouses } from "../controllers/housesController.js";
 
 const housesRouter = express.Router();
 
 housesRouter.get("/", getHouses);
+housesRouter.get("/:id", getHouse);
 
 export default housesRouter;
